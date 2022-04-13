@@ -1,4 +1,6 @@
-﻿namespace DapperAndEntityFrameWorkCourse.Models
+﻿using System.Collections.Generic;
+
+namespace DapperAndEntityFrameWorkCourse.Models
 {
     public class Company
     {
@@ -9,5 +11,6 @@
         public string PostalCode { get; set; }
         public string State { get; set; }
 
+        public List<Employee> Employees { get; set; }
     }
 }

@@ -11,5 +11,12 @@ namespace DapperAndEntityFrameWorkCourse.Data
         }
 
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Company>().Ignore(u => u.Employees);
+            modelBuilder.Entity<Employee>().HasOne(u => u.Company).WithMany(u => u.Employees).HasForeignKey(fk => fk.CompanyId);
+        }
     }
 }

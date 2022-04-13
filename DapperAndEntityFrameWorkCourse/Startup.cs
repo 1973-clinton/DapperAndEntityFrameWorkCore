@@ -1,4 +1,5 @@
 using DapperAndEntityFrameWorkCourse.Data;
+using DapperAndEntityFrameWorkCourse.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,8 @@ namespace DapperAndEntityFrameWorkCourse
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddScoped<ICompanyRepository, CompanyRepositoryEF>();
+            services.AddScoped<IEmployeeRepository,EmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
